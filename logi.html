@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX Request</title>
+<script type="text/javascript">
+var status = "Login Failed";
+function loadData(datas) {
+	var strg = document.getElementById('btn1').value;
+	var strg1 = document.getElementById('btn2').value;
+	var strg2 = document.getElementById('btn');
+	datas = JSON.parse(datas);
+	for(var i = 0; i < datas.length; i++) {
+		if(strg==datas[i].username&&strg1==datas[i].password) status = "Login success";
+	}
+	strg2.innerHTML = status;
+}
+function addClickEvent() {
+	var btnElem = document.getElementById('btn');
+	btnElem.addEventListener('click', function(){
+		var xhr = new XMLHttpRequest();
+		var strg = document.getElementById('btn1').value;
+		var strg1 = document.getElementById('btn2').value;
+		xhr.open('post', 'makejsp');
+		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xhr.send("username="+strg+"&password="+strg1);
+		xhr.onreadystatechange = function() {
+			if(this.readyState == 4 && this.status == 200) {
+				loadData(this.responseText);
+			}
+		}
+	});
+}
+window.addEventListener('load', addClickEvent);
+</script>
+</head>
+<body>
+<input  id="btn1" placeholder="Username" >
+<input  id="btn2" placeholder="Password" >
+<button  id="btn"  >submit</button>
+<div id="data"></div>
+</body></html>

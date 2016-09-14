@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+function Emp(){ if(this.fn) { this.fn=this.fn+1; } else{ this.fn=0; }  this.print=function temp(){ return this.fn; }  }
+function resetDOM() {
+	var elem = document.getElementsByClassName('photos');
+	elm={}
+	for(var i = 0; i < elem.length; i ++) {
+		elm[i] =new Emp();
+		document.getElementById("photos0").innerHTML=i+"likes"+elm[i].print();
+	}
+}
+function myFunction() {
+	var elem = document.getElementsByClassName('photos');
+	for(var i = 0; i < elem.length; i ++) {
+		if(elem[i].addEventListener) {
+			resetDom();
+			//elem[i].addEventListener("click", function(){
+				//document.getElementById("photos0").innerHTML=i+"likes"+elem[i].print();
+			//});
+		}
+	}
+}
+window.addEventListener("load", myFunction);
+
+</script>
+</head>
+<body>
+<img class="photos" src="github.ico" />
+<p id="photos0">0 likes</p>
+<img class="photos" src="github.ico" />
+<p id="photos1">0 likes</p>
+<img class="photos" src="github.ico" />
+<p id="photos2">0 likes</p>
+<img class="photos" src="github.ico" />
+<p id="photos3">0 likes</p>
+<img class="photos" src="github.ico" />
+<p id="photos4">0 likes</p>
+<img class="photos" src="github.ico" />
+<p id="photos5">0 likes</p>
+
+</body>
+</html>
